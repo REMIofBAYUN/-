@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="big.css">
+    <title>放大镜</title>
+</head>
+<body>
+    <div class="box">
+        <img src="./img1.jpg" alt="" class="small">
+        <div class="change"></div>
+        <div class="big">
+            <img src="./img1.jpg" alt=""class="large">
+        </div>
+    </div>
+    <script>
+        window.addEventListener('load', function () {
+            var box = document.querySelector('.box');
+            var change = document.querySelector('.change');
+            var big = document.querySelector('.big');
+            box.addEventListener('mouseover', function () {
+                change.style.display = 'block';
+                big.style.display = 'block';
+            })
+            box.addEventListener('mouseout', function () {
+                change.style.display = 'none';
+                big.style.display = 'none';
+            })
+            box.addEventListener('mousemove', function (e) {
+                var x = e.pageX - box.offsetLeft;
+                var y = e.pageY - box.offsetTop;
+                var width = x - change.offsetWidth / 2;
+                var height = y - change.offsetHeight / 2;
+                if (width <= 0) {
+                    width = 0;
+                } else if (width >= box.offsetWidth - change.offsetWidth) {
+                    width =250;
+                }
+                if (height <= 0) {
+                    height = 0;
+                } else if (height >= box.offsetHeight - change.offsetHeight) {
+                    height = 250;
+                }
+                change.style.left = width + 'px';
+                change.style.top = height + 'px';
+                var bigimg = document.querySelector('.big>img');
+                var bigx = width * (bigimg.offsetWidth - big.offsetWidth) / (box.offsetWidth - change.offsetWidth);
+                var bigy = height * (bigimg.offsetHeight - big.offsetHeight) / (box.offsetHeight - change.offsetHeight);
+                bigimg.style.left = -bigx + 'px';
+                bigimg.style.top = -bigy + 'px';
+            })
+        })
+    </script>
+</body>
+</html>

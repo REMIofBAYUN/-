@@ -1,0 +1,43 @@
+.box {
+    position: relative;
+    width: 350px;
+    height: 350px;
+}
+
+.small{
+    width:350px;
+    height:350px;
+}
+
+.large{
+    width:1750px;
+    height:1750px;
+}
+
+.change {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100px;
+    height: 100px;
+    background-color: yellow;
+    opacity: 0.5;
+    border: 1px solid #333;
+    display: none;
+}
+
+.big {
+    position: absolute;
+    left: 360px;
+    top: 0px;
+    width: 500px;
+    height: 500px;
+    overflow: hidden;
+    display: none;
+}
+
+    .big > img {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
